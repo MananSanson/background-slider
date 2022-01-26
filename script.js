@@ -1,38 +1,40 @@
-const body=  document.body
-const slides=  document.querySelectorAll(".slide")
-const leftBtn= document.getElementById("left")
-const rightBtn= document.getElementById("right")
+const body = document.body
+const slides = document.querySelectorAll('.slide')
+const leftBtn = document.getElementById('left')
+const rightBtn = document.getElementById('right')
 
-let activeSlides= 0
+let activeSlide = 0
 
-rightBtn.addEventListener("click", ()=>{
-    activeSlides++
-    if(activeSlides>slides.length-1){
-        activeSlides=0
-    }
-    setBgToBody()
-    setActiveSlide()
+rightBtn.addEventListener('click', () => {
+  activeSlide++
+
+  if (activeSlide > slides.length - 1) {
+    activeSlide = 0
+  }
+
+  setBgToBody()
+  setActiveSlide()
 })
 
-leftBtn.addEventListener("click", ()=>{
-    activeSlides--
-    if(activeSlides<0){
-        activeSlides=slides.length-1
-    }
-    setBgToBody()
-    setActiveSlide()
+leftBtn.addEventListener('click', () => {
+  activeSlide--
+
+  if (activeSlide < 0) {
+    activeSlide = slides.length - 1
+  }
+
+  setBgToBody()
+  setActiveSlide()
 })
 
 setBgToBody()
 
-function setBgToBody(){
-    body.style.backgroundImage= slides[activeSlides].sytle.backgroundImage
+function setBgToBody() {
+  body.style.backgroundImage = slides[activeSlide].style.backgroundImage
 }
 
-function setActiveSlide(){
-    slides.forEach(slide=>{
-        slide.classList.remove("active")
-    })
+function setActiveSlide() {
+  slides.forEach((slide) => slide.classList.remove('active'))
 
-    slides[activeSlides].classList.add("active")
+  slides[activeSlide].classList.add('active')
 }
